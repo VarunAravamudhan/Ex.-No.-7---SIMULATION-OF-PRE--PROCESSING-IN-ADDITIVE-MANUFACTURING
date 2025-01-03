@@ -1,54 +1,80 @@
-# Ex. No.  - SIMULATION OF PRE PROCESSING IN ADDITIVE MANUFACTURING
-### DATE: 17-12-2024
-## AIM:
-### To simulate the Pre Processing for 3D printing.
+### ENCODER 8TO3 DATAFLOW Modelling
 
-## REQUIREMENTS:
-### System - Windows 7 or higher, 1 GB RAM.
+**AIM:**
 
-## PROCEDURE:
-### Pre-processing encompasses the steps between design and printing. Process of 3D printing starts with designing in CAD. Then printer software slices 3D CAD file into layers. For each slice, the software converts the data into machine code that determines tool paths for the machine to follow. The various steps in pre-processing from design to printing are as follows:
+To implement  Encoder 8 To 3 in Dataflow Modelling using verilog and validating their functionality using their functional tables
 
-### 1)	CAD File
-### 2)	Conversion to STL a. Orientation b. Support Structure c. Slicing d. Path Planning
+**SOFTWARE REQUIRED:** Quartus prime
 
-### 1. CAD File
-### Every manufacturing process starts with the process of designing and as in any type of manufacturing, there are certain limitations to the materials and manufacturing processes that dictate how the product should be designed, 3D printing is no different. In 3d printing, characteristics of hardware, software, temperature, filament and many other factors play an important role in how a digital model translates into a printed object. Some of them are designed with a strong base, grain direction, overhung, wall thickness, round corners and tolerances.
+**THEORY**
 
-### 2. Conversion to STL
-### In order to check the interface of the object and make it reliable to 3d printers, conversion to STL file is required. It also facilitates other features like quick error check, bridging the gap between CAD platforms, exhibition purposes and 3D digitizer extension.
+**Encoder 8 To 3**
 
-### a. Orientation:
-### Orientation plays a vital role in the final product of 3d printing as it affects the part accuracy, manufacturing time, strength and surface finish. There are various orientations by which we can print the object such as vertically upward, vertically downward and in horizontal plane.
+The 8 to 3 line Encoder is also known as Octal to Binary Encoder. In 8 to 3 line encoder, there is a total of eight inputs, i.e., D0, D1, D2, D3, D4, D5, D6, and D7 and three outputs, i.e., A0, A1, and A2. In 8-input lines, one input-line is set to true at a time to get the respective binary code in the output side. Below are the block diagram and the truth table of the 8 to 3 line encoder.
 
-### b. Support Structure:
-### Support structures are required where the objects are unable to get printed directly. Support structures help to guarantee the printability of a section during the 3D printing measure and also it can assist with forestalling part twisting, secure a section to the printing bed and guarantee that parts are joined to the fundamental body of the printed part.
+![image](https://github.com/naavaneetha/ENCODER8TO3DATAFLOW/assets/154305477/0bc242c1-eb9e-4c47-afe5-30428470efc3)
 
-### c. Slicing:
-### The motive behind slicing a 3D model is to transform the model into guidelines for the 3D printer. To play out this errand, the slicing software isolates the item into numerous layers. It's classified "slicing" since it "slices" the 3D model to make numerous layers. After the layers have been made, the slicing software applies different qualities to every one of them.
+Figure 01  Block Diagram of Encoder 8 * 3
 
-### d. Path Planning:
-### Path planning helps to improve the printed surface quality, shape accuracy and infill distribution quality. There are various ways for path planning which can be used to print the objects which may affect the following factors in objects like raster path, grid path, spiral path and zigzag path.
+**Truth Table**
 
-![image](https://github.com/Sellakumar1987/Ex.-No.-7---SIMULATION-OF-PRE--PROCESSING-IN-ADDITIVE-MANUFACTURING/assets/113594316/baef8515-67d7-4c96-accc-4ee88035c9e7)
+![image](https://github.com/naavaneetha/ENCODER8TO3DATAFLOW/assets/154305477/35496b14-ae6e-4cd1-9abd-d6736b576575)
 
-### ●	All the processes related to pre-processing will be shown on the screen.
-### ●	Select CAD file preparation from the visible list.
-### ●	When the first process is selected then it will open in the blank space in the left side of the screen.
-### ●	Select the options of process of pre-processing in the sequence in which they are shown.
-### ●	If the user follows an incorrect sequence then a pop-up will appear on the screen showing the name of the process to be selected.
+The logical expression of the term A0, A1, and A2 are as follows:
 
-## OUTPUT:
-![123_1](https://github.com/Sellakumar1987/Ex.-No.-7---SIMULATION-OF-PRE--PROCESSING-IN-ADDITIVE-MANUFACTURING/assets/113594316/ec8dafd7-cb7c-4a5b-936c-41e86a32a9da)
-![123_2](https://github.com/Sellakumar1987/Ex.-No.-7---SIMULATION-OF-PRE--PROCESSING-IN-ADDITIVE-MANUFACTURING/assets/113594316/c071a941-e5b4-4b31-af63-5f9fe08cd0fb)
-![123_3](https://github.com/Sellakumar1987/Ex.-No.-7---SIMULATION-OF-PRE--PROCESSING-IN-ADDITIVE-MANUFACTURING/assets/113594316/ebb3a944-eeb0-45e8-9841-d58997840c54)
+A0 = D1 + D3 + D5 + D7
 
-## Output:
-![image](https://github.com/user-attachments/assets/3f3fe016-946e-4952-ad77-ff32dccbf07a)
+A1 = D2 + D3 + D6 + D7
+
+A2 = D4 + D5 + D6 + D7
+
+Logical circuit of the above expressions is given below:
+
+![image](https://github.com/naavaneetha/ENCODER8TO3DATAFLOW/assets/154305477/95acaee6-c873-4c75-89eb-ef09fb158053)
+
+Figure 02  Encoder 8 * 3
+
+**Procedure**
+
+  1. Type the program in Quartus software.
+
+  2. Compile and run the program.
+
+  3. Generate the RTL schematic and save the logic diagram.
+
+  4. Create nodes for inputs and outputs to generate the timing diagram.
+
+  5. For different input combinations generate the timing diagram.
+
+**PROGRAM** 
+
+Developed by:Varun A
+
+RegisterNumber: 24900420
+
+```
+module Lab5Enc (Y, A) ;
+input [0:7]Y;
+output [2:0]A;
+assign A[2] = Y[4] | Y[5] | Y[6] | Y[7];
+assign A[1] = Y[2] | Y[3] | Y[6] | Y[7];
+assign A[0] = Y[1] | Y[3] | Y[5] | Y[7];
+endmodule
+```
+
+**RTL LOGIC FOR Encoder 8 To 3 in Dataflow Modelling**
+
+![Screenshot (63)](https://github.com/user-attachments/assets/94d9f968-b4d4-4638-9d77-9c866c244717)
 
 
-### Name: Varun A
-### Register Number:24900420
+**TIMING DIAGRAMS FOR Encoder 8 To 3 in Dataflow Modelling**
 
-## Result: 
-### Thus the simulation on the Preprocessing in additive manufacturing is completed.
+![Screenshot (64)](https://github.com/user-attachments/assets/2abaa2f4-e0a1-4905-8ba6-34ef5fafb896)
+
+
+**RESULT**
+
+Successfully implemented the Encoder 8 To 3 in Dataflow Modelling using verilog and validated their functionality using their functional tables.
+
+
+
